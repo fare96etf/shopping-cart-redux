@@ -1,0 +1,2 @@
+-use more components, one to pick products and cart to reflect the changes
+-use effects for external storage or to call some web api..

@@ -1,0 +1,12 @@
+<h1>Cart</h1>
+
+<button (click)="removeProductFromCart()">Remove product from cart</button>
+
+<div>
+    <ul>
+        <li *ngFor="let cartItem of cart$ | async">
+            Product: {{ cartItem.product.name }},
+            Quantity: {{ cartItem.quantity }}
+        </li>
+    </ul>
+</div>
