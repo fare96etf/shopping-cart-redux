@@ -1,12 +1,23 @@
 <h1>Products</h1>
 
-<div>
-    <ul>
-        <li *ngFor="let product of products$ | async">
-            Id: {{ product.id }},
-            Name: {{ product.name }},
-            Description: {{ product.description }},
-            Price: {{ product.price }}
-        </li>
-    </ul>
-</div>
+Add and remove product page
+
+<form onsubmit="addnewProduct()">
+    <div>
+        <label>Id: </label>
+        <input type="number" (ngModel)="newProduct?.id">
+    </div>
+    <div>
+        <label>Name: </label>
+        <input type="text" (ngModel)="newProduct?.name">
+    </div>
+    <div>
+        <label>Description: </label>
+        <input type="text" (ngModel)="newProduct?.description">
+    </div>
+    <div>
+        <label>Price: </label>
+        <input type="number" (ngModel)="newProduct?.price">
+    </div>
+    <button type="submit">Add new product</button>
+</form>

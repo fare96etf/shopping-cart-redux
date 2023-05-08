@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { removeProductFromCart } from './cart.actions';
+import { addProductToCart, removeProductFromCart } from './cart.actions';
 import { ICartItem } from 'src/app/models/app.models';
 import { cart } from 'src/app/storage/storage';
 
@@ -17,5 +17,32 @@ export const initialState: CartState = {
 
 export const cartReducer = createReducer(
   initialState,
+  on(addProductToCart, (state, { product, quantity }) =>
+    {
+      const existingProductInCart = state.cart.find(cartItem => cartItem.product.id === product.id);
+
+      if (existingProductInCart) {
+        return {
+          ...state, 
+          cart: state.cart.map(cartItem => ({...cartItem}))
+                          .map(cartItem => {
+                            if (cartItem.product.id === product.id) {
+                              return {
+                                ...cartItem,
+                                quantity: cartItem.quantity + quantity
+                              }
+                            }
+                            else {
+                              return cartItem;
+                            }
+                          })  
+        }
+      }
+      else {
+        return {
+          ...state, cart: state.cart.concat([{ product: product, quantity: quantity }])
+        }
+      }
+    }),
   on(removeProductFromCart, (state, { id }) => ({...state, cart: state.cart.filter((item) => item.product.id != id)}))
 );

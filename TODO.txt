@@ -1,2 +1,3 @@
--use more components, one to pick products and cart to reflect the changes
--use effects for external storage or to call some web api..
+-add and remove product 
+-add available flag to cart item, when product is removed set to false
+-beautify frontend

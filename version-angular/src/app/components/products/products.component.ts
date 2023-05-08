@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
+import { IProduct } from "src/app/models/app.models";
+import { addProduct } from "src/app/state/products-state/products.actions";
 import { selectProducts } from "src/app/state/products-state/products.selectors";
 
 @Component({
@@ -8,12 +10,20 @@ import { selectProducts } from "src/app/state/products-state/products.selectors"
     styleUrls: ['./products.component.scss']
   })
 
-  export class ProductsComponent implements OnInit {
+  export class ProductsComponent {
     products$: any;
+    newProduct: IProduct | undefined;
 
-    constructor(private store: Store<any>) {}
-
-    ngOnInit(): void {
+    constructor(private store: Store<any>) {
       this.products$ = this.store.select(selectProducts);
     }
+
+    addnewProduct() {
+      if (this.newProduct) {
+        console.log("radil");
+        this.store.dispatch(addProduct({ product: this.newProduct as IProduct }));
+        this.newProduct = undefined;
+      }
+    } 
+
   }

@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { addProduct, removeProduct, addProductToCart } from './products.actions';
+import { addProduct, removeProduct } from './products.actions';
 import { IProduct } from 'src/app/models/app.models';
 import { products } from 'src/app/storage/storage';
 
@@ -17,7 +17,6 @@ export const initialState: ProductsState = {
 
 export const productsReducer = createReducer(
   initialState,
-  on(addProduct, (state, { product }) => ({...state, products: state.products.concat(product) })),
-  on(removeProduct, (state, { id }) => ({...state, products: products.filter((item) => item.id != id)})),
-  on(addProductToCart, (state) => ({...state})) // to be done
+  on(addProduct, (state, { product }) => ({...state, products: state.products.concat([product])})),
+  on(removeProduct, (state, { id }) => ({...state, products: state.products.filter((item) => item.id != id)}))  
 );
