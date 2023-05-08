@@ -9,6 +9,6 @@ export var products: IProduct[] = [
 ];
 
 export var cart: ICartItem[] = [
-    { product: products[0], quantity: 10 },
-    { product: products[1], quantity: 8 }
+    { product: products[0], quantity: 10, available: true },
+    { product: products[1], quantity: 8, available: true }
 ];

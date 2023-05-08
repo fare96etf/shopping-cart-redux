@@ -1,3 +1,4 @@
--add and remove product 
+-remove product
+-add product form validation 
 -add available flag to cart item, when product is removed set to false
 -beautify frontend

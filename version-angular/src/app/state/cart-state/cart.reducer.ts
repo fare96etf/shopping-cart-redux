@@ -40,7 +40,7 @@ export const cartReducer = createReducer(
       }
       else {
         return {
-          ...state, cart: state.cart.concat([{ product: product, quantity: quantity }])
+          ...state, cart: state.cart.concat([{ product: product, quantity: quantity, available: true }])
         }
       }
     }),

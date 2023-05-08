@@ -6,6 +6,7 @@
         <li *ngFor="let cartItem of cart$ | async">
             Product: {{ cartItem.product.name }},
             Quantity: {{ cartItem.quantity }}
+            <span *ngIf="cartItem.available === false">, SOLD OUT</span>
             <button (click)="removeProductFromCart(cartItem.product.id)">Remove product from cart</button>
         </li>
     </ul>

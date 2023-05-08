@@ -6,6 +6,7 @@ import { cartReducer } from './state/cart-state/cart.reducer';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductsComponent } from './components/products/products.component';
 import { productsReducer } from './state/products-state/products.reducer';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { productsReducer } from './state/products-state/products.reducer';
     StoreModule.forRoot({
       cart: cartReducer,
       products: productsReducer
-    })
+    }),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [

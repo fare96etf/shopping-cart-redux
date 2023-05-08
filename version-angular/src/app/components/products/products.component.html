@@ -1,23 +1,17 @@
 <h1>Products</h1>
 
-Add and remove product page
-
-<form onsubmit="addnewProduct()">
-    <div>
-        <label>Id: </label>
-        <input type="number" (ngModel)="newProduct?.id">
-    </div>
+<form [formGroup]="productForm" (ngSubmit)="addnewProduct()">
     <div>
         <label>Name: </label>
-        <input type="text" (ngModel)="newProduct?.name">
+        <input id="name" type="text" formControlName="name">
     </div>
     <div>
         <label>Description: </label>
-        <input type="text" (ngModel)="newProduct?.description">
+        <input id="description" type="text" formControlName="description">
     </div>
     <div>
         <label>Price: </label>
-        <input type="number" (ngModel)="newProduct?.price">
+        <input id="price" type="number" formControlName="price">
     </div>
     <button type="submit">Add new product</button>
 </form>
