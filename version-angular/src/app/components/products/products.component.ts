@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { IProduct } from "src/app/models/app.models";
-import { addProduct } from "src/app/state/products-state/products.actions";
+import { addProductToCart, setProductInCartToSoldOut } from "src/app/state/cart-state/cart.actions";
+import { addProduct, removeProduct } from "src/app/state/products-state/products.actions";
 import { selectProducts } from "src/app/state/products-state/products.selectors";
 
 @Component({
@@ -26,6 +27,10 @@ import { selectProducts } from "src/app/state/products-state/products.selectors"
       });
     }
 
+    addProductToCart(product: IProduct) {
+      this.store.dispatch(addProductToCart({ product: product, quantity: 1}));
+    }
+
     addnewProduct() {
       if (this.productForm.value.price as number > 0 
           && (this.productForm.value.name as string).trim().length > 0
@@ -41,6 +46,11 @@ import { selectProducts } from "src/app/state/products-state/products.selectors"
         this.currentId = this.currentId + 1;
         this.store.dispatch(addProduct({ product: newProduct }));
       }
-    } 
+    }
+    
+    removeProduct(id: number) {
+      this.store.dispatch(removeProduct({ id: id }));
+      this.store.dispatch(setProductInCartToSoldOut({ id: id }));
+    }
 
   }

@@ -13,15 +13,9 @@ import { Observable } from 'rxjs';
 })
 export class CartComponent {
   cart$: Observable<ICartItem[]>;
-  products$: Observable<IProduct[]>;
  
   constructor(private store: Store<any>) {
     this.cart$ = this.store.select(selectCart);
-    this.products$ = this.store.select(selectProducts);
-  }
-
-  addProductToCart(product: IProduct) {
-    this.store.dispatch(addProductToCart({ product: product, quantity: 1}));
   }
  
   removeProductFromCart(id: number) {

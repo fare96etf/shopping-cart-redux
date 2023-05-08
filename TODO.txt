@@ -1,4 +1,3 @@
--remove product
--add product form validation 
--add available flag to cart item, when product is removed set to false
+-figure out how to use effects with two actions for removing product in products component
+-add enums for actions
 -beautify frontend

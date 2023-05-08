@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { addProductToCart, removeProductFromCart } from './cart.actions';
+import { addProductToCart, removeProductFromCart, setProductInCartToSoldOut } from './cart.actions';
 import { ICartItem } from 'src/app/models/app.models';
 import { cart } from 'src/app/storage/storage';
 
@@ -44,5 +44,22 @@ export const cartReducer = createReducer(
         }
       }
     }),
-  on(removeProductFromCart, (state, { id }) => ({...state, cart: state.cart.filter((item) => item.product.id != id)}))
+  on(removeProductFromCart, (state, { id }) => ({...state, cart: state.cart.filter((item) => item.product.id != id)})),
+  on(setProductInCartToSoldOut, (state, { id }) => {
+    return {
+      ...state,
+      cart: state.cart.map(cartItem => ({...cartItem}))
+                          .map(cartItem => {
+                            if (cartItem.product.id === id) {
+                              return {
+                                ...cartItem,
+                                available: false
+                              }
+                            }
+                            else {
+                              return cartItem;
+                            }
+                          })  
+    }
+  })
 );

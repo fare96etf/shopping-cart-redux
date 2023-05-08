@@ -1,6 +1,6 @@
 <h1>Cart</h1>
 
-<h2>In Cart</h2>
+<h3>In Cart</h3>
 <div>
     <ul>
         <li *ngFor="let cartItem of cart$ | async">
@@ -12,18 +12,6 @@
     </ul>
 </div>
 
-<h2>Product list</h2>
-<div>
-    <ul>
-        <li *ngFor="let product of products$ | async">
-            Id: {{ product.id }},
-            Name: {{ product.name }},
-            Description: {{ product.description }},
-            Price: {{ product.price }}
-            <button (click)="addProductToCart(product)">Add product to cart</button>
-        </li>
-    </ul>
-</div>
 
 
 
