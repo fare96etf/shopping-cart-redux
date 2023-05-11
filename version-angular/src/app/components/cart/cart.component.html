@@ -1,17 +1,24 @@
 <h1>Cart</h1>
 
 <h3>In Cart</h3>
-<div>
-    <ul>
-        <li *ngFor="let cartItem of cart$ | async">
-            Product: {{ cartItem.product.name }},
-            Quantity: {{ cartItem.quantity }}
-            <span *ngIf="cartItem.available === false">, SOLD OUT</span>
-            <button (click)="removeProductFromCart(cartItem.product.id)">Remove product from cart</button>
-        </li>
-    </ul>
-</div>
-
-
-
+<table class="table table-sm table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Product name</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cartItem of cart$ | async">
+            <td> {{ cartItem.product.name }} 
+                <span *ngIf="cartItem.available === false" style="color: red;">(SOLD OUT)</span>
+            </td>
+            <td> {{ cartItem.quantity }} </td>
+            <td>
+                <button class="btn btn-danger" (click)="removeProductFromCart(cartItem.product.id)">Remove product from cart</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
 

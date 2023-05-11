@@ -1,33 +1,43 @@
 <h1>Products</h1>
 
-<h3>Product list</h3>
-<div>
-    <ul>
-        <li *ngFor="let product of products$ | async">
-            Id: {{ product.id }},
-            Name: {{ product.name }},
-            Description: {{ product.description }},
-            Price: {{ product.price }}
-            <button (click)="addProductToCart(product)">Add product to cart</button>
-            <button (click)="removeProduct(product.id)">Remove product from list</button>
-        </li>
-    </ul>
-</div>
-
+<h3>Available products list</h3>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products$ | async">
+            <td> {{ product.id }} </td>
+            <td> {{ product.name }} </td>
+            <td> {{ product.description }} </td>
+            <td> {{ product.price }} </td>
+            <td> 
+                <button class="btn btn-primary" (click)="addProductToCart(product)">Add product to cart</button> 
+                <button class="btn btn-danger" (click)="removeProduct(product.id)">Remove product from list</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 <h3>Add new product</h3>
 <form [formGroup]="productForm" (ngSubmit)="addnewProduct()">
-    <div>
-        <label>Name: </label>
+    <div class="mb-3">
+        <label class="form-label me-3">Name: </label>
         <input id="name" type="text" formControlName="name">
     </div>
-    <div>
-        <label>Description: </label>
+    <div class="mb-3">
+        <label class="form-label me-3">Description: </label>
         <input id="description" type="text" formControlName="description">
     </div>
-    <div>
-        <label>Price: </label>
+    <div class="mb-3">
+        <label class="form-label me-3">Price: </label>
         <input id="price" type="number" formControlName="price">
     </div>
-    <button type="submit">Add new product</button>
+    <button class="btn btn-primary" type="submit">Add new product</button>
 </form>

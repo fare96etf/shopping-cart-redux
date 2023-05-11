@@ -1,3 +1,2 @@
--figure out how to use effects with two actions for removing product in products component
--add enums for actions
--beautify frontend
+-completed angular
+-react part left
