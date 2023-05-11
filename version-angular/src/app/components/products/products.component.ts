@@ -9,8 +9,7 @@ import { selectProducts } from "src/app/state/products-state/products.selectors"
 
 @Component({
     selector: 'products-component',
-    templateUrl: './products.component.html',
-    styleUrls: ['./products.component.scss']
+    templateUrl: './products.component.html'
   })
 
   export class ProductsComponent {
