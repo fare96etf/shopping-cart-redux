@@ -17,6 +17,6 @@ export class CartComponent {
   }
  
   removeProductFromCart(id: number) {
-    this.store.dispatch(removeProductFromCart({ id: id}));
+    this.store.dispatch(removeProductFromCart({ id: id }));
   }
 }

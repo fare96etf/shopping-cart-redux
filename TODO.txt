@@ -1,2 +1,6 @@
--completed angular
--react part left
+ANGULAR
+-completed
+
+REACT
+-add new product
+-see how to improve
