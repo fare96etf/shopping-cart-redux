@@ -2,5 +2,4 @@ ANGULAR
 -completed
 
 REACT
--add new product
--see how to improve
+-completed
