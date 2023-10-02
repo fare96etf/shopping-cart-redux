@@ -1,7 +1,6 @@
 # Running the app
 
-For angular version: check version-angular/README.md
-For react version: check version-react/README.md
+For angular version: check version-angular/README.md .. For react version: check version-react/README.md
 
 # Examples - angular
 
